@@ -4,7 +4,7 @@ import re
 def roll_damage(text: str) -> str:
     args = text.split()[1:]
     if not args:
-        return "Формат: /damage XdY [+/-бонус]"
+        return "Формат: /d XdY [+/-бонус]"
 
     dice_part = args[0]
     bonus = 0
