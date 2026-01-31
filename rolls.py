@@ -28,6 +28,9 @@ def roll_check(text: str) -> str:
             return f"Ошибка: неверный модификатор {mod}"
 
     target = base_target + total_modifier
+    if base_target < 0:
+        base_target = 1
+    
     roll = secrets.randbelow(100) + 1
 
     target_tens = target // 10
