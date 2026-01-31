@@ -29,7 +29,7 @@ def roll_damage(text: str) -> str:
     total = sum(rolls) + bonus
 
     return (
-        f"🎲 Броски: {rolls}\n"
-        f"➕ Бонус: {bonus}\n"
-        f"💥 Итоговый урон: {total}"
+        f"Броски: {rolls}\n"
+        f"Бонус: {bonus}\n"
+        f"Итоговый урон: {total}"
     )
