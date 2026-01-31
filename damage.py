@@ -29,6 +29,8 @@ def roll_damage(text: str) -> str:
     rolls = [secrets.randbelow(sides) + 1 for _ in range(count)]
     total = sum(rolls) + total_modifier
 
+    total = max(0, total)
+    
     return (
         f"Броски: {rolls}\n"
         f"Модификаторы: {total_modifier:+}\n"
