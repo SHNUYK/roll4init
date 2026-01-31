@@ -1,4 +1,4 @@
-import random
+import secrets
 import re
 
 def roll_damage(text: str) -> str:
@@ -25,7 +25,7 @@ def roll_damage(text: str) -> str:
     if count <= 0 or sides <= 0:
         return "Ошибка: количество костей и граней должно быть > 0"
 
-    rolls = [random.randint(1, sides) for _ in range(count)]
+    rolls = [secrets.randbelow(sides) + 1 for _ in range(count)]
     total = sum(rolls) + bonus
 
     return (
