@@ -4,16 +4,17 @@ import re
 def roll_damage(text: str) -> str:
     args = text.split()[1:]
     if not args:
-        return "Формат: /d XdY [+/-бонус]"
+        return "Формат: /d XdY [+/-модификаторы...]"
 
     dice_part = args[0]
-    bonus = 0
-
-    if len(args) > 1:
+    total_modifier = 0
+    for mod in args[1:]:
+        if not (mod.startswith("+") or mod.startswith("-")):
+            return f"Ошибка: неверный модификатор {mod}"
         try:
-            bonus = int(args[1])
+            total_modifier += int(mod)
         except ValueError:
-            return "Ошибка: бонус должен быть числом"
+            return f"Ошибка: неверный модификатор {mod}"
 
     match = re.fullmatch(r"(\d+)d(\d+)", dice_part)
     if not match:
@@ -26,10 +27,10 @@ def roll_damage(text: str) -> str:
         return "Ошибка: количество костей и граней должно быть > 0"
 
     rolls = [secrets.randbelow(sides) + 1 for _ in range(count)]
-    total = sum(rolls) + bonus
+    total = sum(rolls) + total_modifier
 
     return (
         f"Броски: {rolls}\n"
-        f"Бонус: {bonus}\n"
+        f"Модификаторы: {total_modifier:+}\n"
         f"Итоговый урон: {total}"
     )
