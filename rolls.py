@@ -11,7 +11,7 @@ DIVINE_DOUBLES = {
 def roll_check(text: str) -> str:
     args = text.split()[1:]
     if not args:
-        return "Формат: /roll [пул] [+/-модификатор]"
+        return "Формат: /r [пул] [+/-модификатор]"
 
     try:
         base_target = int(args[0])
