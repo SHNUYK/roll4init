@@ -40,19 +40,16 @@ def roll_check(text: str) -> str:
         f"Итоговый пул: {target}"
     ]
 
-    # Криты
     if roll == 1:
         lines.append("КРИТИЧЕСКИЙ УСПЕХ")
     elif roll == 100:
         lines.append("КРИТИЧЕСКИЙ ПРОВАЛ")
 
-    # Дубли
     if roll % 11 == 0:
         lines.append("ДУБЛЬ!")
         if roll in DIVINE_DOUBLES:
             lines.append(DIVINE_DOUBLES[roll])
 
-    # Степени (RAW DH2)
     if roll <= target:
         degrees = (target_tens - roll_tens) + 1
         lines.append("УСПЕХ")
