@@ -18,7 +18,7 @@ async def damage_handler(message: types.Message):
     result = roll_damage(message.text)
     await message.reply(result)
 
-@dp.message(Commands("help"))
+@dp.message(Command("help"))
 async def help_command(message: types.Message):
     help_text = (
         "Список команд:\n\n"
@@ -31,7 +31,7 @@ async def help_command(message: types.Message):
     )
     await message.reply(help_text)
 
-@dp.message(Commands("start"))
+@dp.message(Command("start"))
 async def start_command(message: types.Message):
     await message.reply("Бот активирован и готов к работе! Используйте /help для списка команд.")
 
